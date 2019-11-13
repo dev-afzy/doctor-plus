@@ -1,0 +1,37 @@
+
+ <div class="page-wrapper  m-3 flex-container center bg-gra-01 p-t-280 p-b-200   font-poppins"> 
+        <div class="wrapper  wrapper--w780">
+            
+            <div class="card card-3 m-5">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h1 class="text-white m-2 text-center">LOGIN</h1>
+                     {{isnt errorss=''}}
+                       {{#each errorss}}
+                            {{#each this}}
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{this}}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                            {{/each}}
+                        {{/each}}
+                    {{isnt}}    
+                    <form action="../user/login" method="POST" >
+                        <div class="input-group">
+                            <input class="input--style-3" type="text" placeholder="Email" name="email">
+                        </div>
+                        
+                        <div class="input-group">
+                            <input class="input--style-3" type="password" placeholder="Password" name="password">
+                        </div>
+                        <div class="p-t-10">
+                           <button class="btnn btnn--pill btnn--green" type="submit">Login</button>
+                        </div>
+                        <p class="text-white mt-2">If you don't have an account <a href="/user/signup" class="bg-white text-success">Signup</a></p> 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

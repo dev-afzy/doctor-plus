@@ -1,0 +1,328 @@
+    {{# if login}}
+		{{# if book1}}
+			<div class="top_menu row m-0">
+				<div class="container">
+					
+					<div class="float-left">
+						<ul class="left_side">
+							<li>
+								<a class=" text-danger " href="/user/doctors">
+								<i class="fa fa-arrow-left" aria-hidden="true"> Back</i>
+								</a>
+							</li>
+							<li>
+								<a href="/" class="text-bold">
+									<i class="fa fa-home text-primary" aria-hidden="true"></i>
+									Home
+								</a>
+							</li>
+							
+						</ul>
+					</div>
+					<div class="float-right">
+						<ul class="right_side">
+							<li>
+								<a href="/user/profile" class="text-bold">
+									<i class="fa fa-user text-success" aria-hidden="true"></i>
+									Profile
+								</a>
+							</li>
+							<li>
+								<a href="/user/logout" class="text-bold">
+									<i class="fa fa-sign-out text-danger" aria-hidden="true"></i>
+									Logout
+								</a>
+							</li>
+						</ul>
+					</div>
+						
+				</div>
+			</div>
+		{{else}}
+		
+			{{# if profile}}
+			<div class="top_menu row m-0">
+				<div class="container">
+					<div class="float-right">
+						<ul class="right_side">
+								
+							<li>
+								<a href="/doctor/appointment" class="text-bold">
+									<i class="fa fa-dashboard text-warning" aria-hidden="true"></i>
+									DashBoard
+								</a>
+							</li>
+							<li>
+								<a href="/Doctor/profile" class="text-bold">
+									<i class="fa fa-user text-success" aria-hidden="true"></i>
+									Profile
+								</a>
+							</li>
+							<li>
+								<a href="/doctor/logout" class="text-bold">
+									<i class="fa fa-sign-out text-danger" aria-hidden="true"></i>
+									Logout
+								</a>
+							</li>
+						</ul>
+					</div>
+							
+				</div>
+			</div>
+			{{else}}	
+	<!--================Header Menu Area =================-->
+				{{# if admin}}
+				{{else}}
+					<header class="header_area ">
+						<div class="top_menu row m-0">
+							<div class="container">
+								<div class="float-left">
+									<ul class="left_side">
+										<li>
+											<a href="login.html">
+												<i class="fa fa-facebook-f"></i>
+											</a>
+										</li>
+										<li>
+											<a href="login.html">
+												<i class="fa fa-twitter"></i>
+											</a>
+										</li>
+										<li>
+											<a href="login.html">
+												<i class="fa fa-dribbble"></i>
+											</a>
+										</li>
+										<li>
+											<a href="login.html">
+												<i class="fa fa-behance"></i>
+											</a>
+										</li>
+									</ul>
+								</div>
+								<div class="float-right">
+									<ul class="right_side">
+										<li>
+											<a href="/user/profile" class="text-bold">
+												<i class="fa fa-user text-success" aria-hidden="true"></i>
+												Profile
+											</a>
+										</li>
+										<li>
+											<a href="/user/logout" class="text-bold">
+												<i class="fa fa-sign-out text-danger" aria-hidden="true"></i>
+												Logout
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="main_menu">
+							<nav class="navbar navbar-expand-lg navbar-light ">
+								<div class="container">
+									<!-- Brand and toggle get grouped for better mobile display -->
+									<a class="navbar-brand logo_h" href="/">
+										<img src="/images/logo.png" alt="">
+									</a>
+									<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+									aria-expanded="false" aria-label="Toggle navigation">
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									</button>
+									<!-- Collect the nav links, forms, and other content for toggling -->
+									<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+										<div class="row ml-0 w-100">
+											<div class="col-lg-12 pr-0">
+												<ul class="nav navbar-nav center_nav pull-right">
+													<li class="nav-item active">
+														<i class="fa fa-home text-primary" aria-hidden="true"></i>
+														<a class="nav-link" href="/">Home</a>
+													</li>
+													<li class="nav-item ">
+														<a class="nav-link" href="/user/department">Departments</a>
+													</li>
+													<li class="nav-item ">
+														<a class="nav-link" href="/user/doctors">Doctors</a>
+													</li>
+													<li class="nav-item submenu dropdown">
+														<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
+														<ul class="dropdown-menu">
+															<li class="nav-item">
+																<a class="nav-link" href="user/about">About</a>
+															</li>
+															<li class="nav-item">
+																<a class="nav-link" href="user/services">Services</a>
+															</li>
+															<li class="nav-item">
+																<a class="nav-link" href="user/elements">Elements</a>
+															</li>
+														</ul>
+													</li>
+								
+													<li class="nav-item">
+														<a class="nav-link" href="contact.hbs">Contact</a>
+													</li>
+													
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</nav>
+						</div>
+					</header>					
+				{{/ if}}
+			{{/ if}}
+		{{/ if}}
+	{{else}}
+		{{# if book}}
+			<div class="top_menu row m-0">
+				<div class="container">
+					<div class="float-right">
+						<ul class="right_side">						
+							<li>
+								<a href="/user/signup" class="text-bold">
+								<i class="fa fa-user-plus text-warning" aria-hidden="true"></i>
+								Sign up
+								</a>
+							</li>
+							<li>
+								<a href="/user/login" class="text-bold">
+									<i class="fa fa-sign-in text-success" aria-hidden="true"></i>
+									Login
+								</a>
+							</li>
+						</ul>
+					</div>
+										
+				</div>
+			</div>
+		{{else}}
+			{{# if doctor}}
+				<div class="top_menu row m-0">
+					<div class="container">								
+						<div class="float-right">
+							<ul class="right_side">										
+								<li>
+									<a href="/doctor/signup" class="text-bold">
+										<i class="fa fa-user-plus text-warning" aria-hidden="true"></i>
+										Sign up
+									</a>
+								</li>
+								<li>
+									<a href="/doctor/login" class="text-bold">
+										<i class="fa fa-sign-in text-success" aria-hidden="true"></i>
+										Log in
+									</a>
+								</li>
+							</ul>
+						</div>
+									
+					</div>
+				</div>
+			{{else}}
+				<header class="header_area ">
+					<div class="top_menu row m-0">
+						<div class="container">
+							<div class="float-left">
+								<ul class="left_side">
+									<li>
+										<a href="login.html">
+											<i class="fa fa-facebook-f"></i>
+										</a>
+									</li>
+									<li>
+										<a href="login.html">
+											<i class="fa fa-twitter"></i>
+										</a>
+									</li>
+									<li>
+										<a href="login.html">
+											<i class="fa fa-dribbble"></i>
+										</a>
+									</li>
+									<li>
+										<a href="login.html">
+											<i class="fa fa-behance"></i>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div class="float-right">
+								<ul class="right_side">
+									<li>
+										<a href="/user/login" class="text-bold">
+										<i class="fa fa-sign-in text-success" aria-hidden="true"></i>
+										Login
+										</a>
+									</li>
+									<li>
+										<a href="/user/SIgnup" class="text-bold">
+											<i class="fa fa-user-plus text-warning" aria-hidden="true"></i>
+											Signup
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="main_menu">
+						<nav class="navbar navbar-expand-lg navbar-light ">
+							<div class="container">
+								<!-- Brand and toggle get grouped for better mobile display -->
+								<a class="navbar-brand logo_h" href="/">
+									<img src="/images/logo.png" alt="">
+								</a>
+								<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+								aria-expanded="false" aria-label="Toggle navigation">
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+								<!-- Collect the nav links, forms, and other content for toggling -->
+								<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+									<div class="row ml-0 w-100">
+										<div class="col-lg-12 pr-0">
+											<ul class="nav navbar-nav center_nav pull-right">
+												<li class="nav-item active">
+													<i class="fa fa-home text-primary" aria-hidden="true"></i>
+													<a class="nav-link" href="/">Home</a>
+												</li>
+												<li class="nav-item ">
+													<a class="nav-link" href="/user/department">Departments</a>
+												</li>
+												<li class="nav-item ">
+													<a class="nav-link" href="/user/doctors">Doctors</a>
+												</li>
+												<li class="nav-item submenu dropdown">
+													<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
+													<ul class="dropdown-menu">
+														<li class="nav-item">
+															<a class="nav-link" href="user/about">About</a>
+														</li>
+														<li class="nav-item">
+															<a class="nav-link" href="user/services">Services</a>
+														</li>
+														<li class="nav-item">
+															<a class="nav-link" href="user/elements">Elements</a>
+														</li>
+													</ul>
+												</li>
+							
+												<li class="nav-item">
+													<a class="nav-link" href="contact.hbs">Contact</a>
+												</li>
+												
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</nav>
+					</div>
+				</header>
+			{{/ if}}
+		{{/ if}}
+	{{/ if}}	

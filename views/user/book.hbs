@@ -1,0 +1,40 @@
+
+<section class="appointment-area mt-5 ">
+		<div class="container">
+			<div class="row justify-content-center align-items-center appointment-wrap">
+				<div class="col-lg-6 col-md-6 pt-60 pb-60">
+					<div class="appointment-right">
+						<form class="form-wrap" action="user/book">
+							<h3 class="pb-20 text-center mb-20">Book an Appointment</h3>
+                            <label for="name"> Name</label>
+							<input type="text" class="form-control" name="name" placeholder="Patient Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Patient Name'">
+							<label for="phone">Phone</label>
+                            <input type="text" class="form-control" name="phone" placeholder="Phone " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone'">
+							<label for="Email">Email</label>
+                            <input type="email" class="form-control" name="email" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'">
+							<label for="dop">Date Of Birth</label>
+                            <input type="date" id="datepicker1" name="dop" class="dates form-control" placeholder="Date of Birth">
+							<label id="service-select">Disease Type</label>
+                            <div class="form-select" id="service-select">
+								<select>
+									<option data-display="">Disease Type</option>
+									<option value="1">Type One</option>
+									<option value="2">Type Two</option>
+									<option value="3">Type Three</option>
+									<option value="4">Type Four</option>
+								</select>
+							</div>
+                            <label for="" id="datepicker2">Appointment Date</label>
+							<input type="date" id="datepicker2" class="dates form-control" placeholder="appointment Date">
+							<label for="Message">Message</label>
+                            <textarea name="messege" class="" rows="5" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'"></textarea>
+							<div class="text-center confirm_btn_box">
+								<button class="main_btn text-uppercase">Confirm Booking</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	

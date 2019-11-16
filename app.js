@@ -4,7 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const expresshbs = require('express-handlebars')
-const mongodb = require('mongodb')
 const mongoose = require('mongoose')
 const session = require('express-session')
 const flash = require('connect-flash')
@@ -19,7 +18,6 @@ var app = express();
 
 //passport config
 require('./config/passport')(passport)
-
 // // view engine setup
 // app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'hbs');

@@ -3,23 +3,24 @@ var express = require('express');
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 
+
 var router = express.Router();
 
 //model
 const Doctor = require('../model/doctor')
 
 /* GET doctors listing. */
-router.get('/',isAuthenticated,(req, res, next) =>{
+router.get('/',(req, res, next) =>{
   return res.render("doctor/login", {book:1})
 });
 
  /* GET Doctor Login. */
-router.get('/appointment',isAuthenticated, (req,res)=>{
+router.get('/appointment',isAuthenticated,(req,res)=>{
   res.render('doctor/appointment',{profile:1})
 })
   
   /* GET Doctot profile. */
-router.get('/profile', isAuthenticated, (req, res)=> {
+router.get('/profile',isAuthenticated, (req, res)=> {
   // res.send("department")
   res.render('doctor/profile',{profile:1});
     
@@ -103,7 +104,7 @@ router.post('/signup',(req,res)=>{
                             // req.session.email = email;
                             req.flash('success_msg', 'welcome')
                             
-                            res.redirect('doctor/profile')
+                            res.redirect('/doctor/profile')
                         })
                         .catch(err=>console.log(err))
                     
@@ -127,20 +128,19 @@ router.get('/login',(req,res)=>{
 router.post('/login', (req, res, next)=>{
   const email = req.body.email
   let errorss = []
-  passport.authenticate('local-doctor', (err, doctor, info)=> {
+  passport.authenticate('user', (err, user, info)=> {
       if (err) { return next(err); }
-      if(!doctor){    
+      if(!user){    
           console.log(req.body)
           errorss.push({msg:'Email or password is incorrect'})
           console.log(errorss)
-      return res.render('doctor/login', {errorss, email,book:1}) 
+          return res.render('doctor/login', {errorss, email,book:1}) 
       }
        
-      req.logIn(doctor, (err)=> {
+      req.logIn(user, (err)=> {
         if (err) { return next(err); }
-        
-      // req.session.email = email;
-        res.redirect('doctor/profile')
+        // req.session.email = email;
+        return res.redirect('/doctor/profile')
       })
     })(req, res, next)
 })
@@ -156,7 +156,8 @@ router.post('/login', (req, res, next)=>{
     if (!req.isAuthenticated()) {
       return next();
     }
-    res.redirect('doctor/appointment');      
+    res.redirect('/doctor/appointment');      
   }
   
+
 module.exports = router;

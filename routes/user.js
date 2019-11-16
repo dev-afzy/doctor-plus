@@ -10,7 +10,7 @@ const User = require('../model/user')
 /* GET users profile. */
 router.get('/profile', isAuthenticated,(req, res)=> {
   // res.send("department")
-  res.render('user/profile');
+  return res.render('user/profile');
   
 });
 
@@ -36,7 +36,7 @@ router.get('/doctors',(req, res)=> {
 
 router.get('/logout',(req, res)=>{
   req.logOut()
-  res.render("user/login", {book:1})
+  return res.render('user/login', {book:1})
 })
 
 
@@ -115,7 +115,7 @@ router.post('/signup',(req,res)=>{
                             // req.session.email = email;
                             req.flash('success_msg', 'welcome')
                             
-                            res.redirect('/')
+                          return res.redirect('/')
                         })
                         .catch(err=>console.log(err))
                     
@@ -132,7 +132,7 @@ router.post('/signup',(req,res)=>{
 /* GET users Login. */
 router.get('/login',(req,res)=>{
   console.log(req.flash('error'));
-  res.render('user/login',{book:1})
+  return res.render('user/login',{book:1})
   
 })
 
@@ -141,7 +141,7 @@ router.get('/login',(req,res)=>{
 router.post('/login', (req, res, next)=>{
   const email = req.body.email
   let errorss = []
-  passport.authenticate('user-local', (err, user, info)=> {
+  passport.authenticate('user', (err, user, info)=> {
       if (err) { return next(err); }
       if(!user){    
           console.log(req.body)
@@ -154,7 +154,7 @@ router.post('/login', (req, res, next)=>{
         if (err) { return next(err); }
         
       // req.session.email = email;
-        res.redirect('/')
+      return  res.redirect('/')
       })
     })(req, res, next)
 })

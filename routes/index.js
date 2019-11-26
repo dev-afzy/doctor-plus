@@ -1,9 +1,18 @@
 var express = require('express');
 var router = express.Router();
+const doctor = require('../model/doctor')
 
 /* GET home page. */
 router.get('/',function(req, res, next) {
-return res.render('index');
+  doctor.find((err, docs)=>{
+    var doctorchunks=[]
+    var chunksize = 4
+    for(var i = 0; i < docs.length; i+=chunksize){
+      doctorchunks.push(docs.slice(i, i+chunksize))
+    }
+   return res.render('index', { title: 'Doctor', doctors:doctorchunks  })
+  })
+
 });
 
 router.use('/', (req, res, next)=>{

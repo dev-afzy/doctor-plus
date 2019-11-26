@@ -28,7 +28,7 @@ router.get('/profile',isAuthenticated, (req, res)=> {
 
 router.get('/logout',(req, res)=>{
   req.logOut()
-  return res.render("doctor/login", {book:1})
+  return res.render("doctor/login", {profile:1, doctor:1})
 })
 
 router.use('/', forwardAuthenticated, (req, res, next)=>{
@@ -44,7 +44,7 @@ router.get('/signup',(req,res)=>{
 
 //get post router
 router.post('/signup',(req,res)=>{
-  const {name, email,lsno, gender, password, password1} = req.body
+  const {name, email,lsno, gender,department, password, password1} = req.body
     let errors = []
     console.log(req.body)
 
@@ -61,8 +61,8 @@ router.post('/signup',(req,res)=>{
         console.log(errors.msg)
         console.log(req.body)
         res.render('doctor/signup',{
-            errors,name,email, lsno, gender, password, password1
-        })
+            errors,name,email, lsno, gender,department, password, password1
+        ,doctor:1})
     }
     else{
         //Validation passed
@@ -79,6 +79,7 @@ router.post('/signup',(req,res)=>{
                     email,
                     lsno,
                     gender,
+                    department,
                     password,
                     password1,
                     
@@ -89,6 +90,7 @@ router.post('/signup',(req,res)=>{
                     email,
                     lsno,
                     gender,
+                    department,
                     password
                 })
                 //hash passsword
@@ -128,7 +130,7 @@ router.get('/login',(req,res)=>{
 router.post('/login', (req, res, next)=>{
   const email = req.body.email
   let errorss = []
-  passport.authenticate('user', (err, user, info)=> {
+  passport.authenticate('doctor',(err, user, info)=> {
       if (err) { return next(err); }
       if(!user){    
           console.log(req.body)

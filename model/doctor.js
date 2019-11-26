@@ -6,29 +6,62 @@ const schema = new Schema({
     name:{type:String,
          required:true,
           trim:true,
-          default:''},
+          },
     email:{type:String,
          required:true,
           lowercase:true,
            trim:true,
-           default:''},
+           },
     lsno:{type:String,
         required:true,
         lowercase:true,
         trim:true,
-        default:''},           
+        },           
     gender:{
         type:String,
         required:true,
-        default:''
+        
+    },
+    department:{
+        type:String,
+        required:true,
+        
     },
     password:{type:String,
         required:true,
         trim:true,
-        default:''},        
+        },        
     date:{type:Date,
         default:Date.now,
         },
+    img:{
+        type:String,
+        trim:true
+    },
+    phone:{
+        type:Number,
+        trim:true
+    },
+    profession:{
+        type:String,
+        trim:true
+    },
+    experiance:{
+        type:Number,
+    },
+    fees:{
+        type:Number,
+        trim:true
+    },
+    availability:{
+        type:String,
+        trim:true
+    },
+    bio:{
+        type:String,
+        
+    },
+    
     type:{
         type:Number,
         default:1

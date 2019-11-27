@@ -4,21 +4,26 @@
 			<div class="row justify-content-center align-items-center appointment-wrap">
 				<div class="col-lg-6 col-md-6 pt-60 pb-60">
 					<div class="appointment-right">
-						<form class="form-wrap" action="user/book">
+						<form class="form-wrap" action="/user/book" method="POST">
 							<h3 class="pb-20 text-center mb-20">Book an Appointment</h3>
                             <label for="name"> Name</label>
-							<input type="text" class="form-control" name="name" placeholder="Patient Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Patient Name'">
+							<input type="text" class="form-control" name="name" placeholder="Patient Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Patient Name'" required>
+							
 							<label for="phone">Phone</label>
-                            <input type="text" class="form-control" name="phone" placeholder="Phone " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone'">
+                            <input type="tel" class="form-control " name="phone" placeholder="7736868256 "
+							 onfocus="this.placeholder = '7736868256'" onblur="this.placeholder = 'Phone'" 
+							 required pattern="[0-9]{10}" oninvalid="this.setCustomValidity('Please enter valid phone number')"
+    						oninput="this.setCustomValidity('')" 
+							>							
 							<label for="Email">Email</label>
-                            <input type="email" class="form-control" name="email" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'">
+                            <input type="email" class="form-control" name="email" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'" required>
 							<label for="dop">Date Of Birth</label>
-                            <input type="date" id="datepicker1" name="dop" class="dates form-control" placeholder="Date of Birth">
+                            <input type="date" id="dob" name="dob" class="dates form-control" placeholder="Date of Birth" required>
 							<label for="dop">Doctor Name</label>
-                            <input type="text" id="doctor" name="doctor" class="dates form-control" placeholder="" disabled>
-							<input type="text" id="doctor_id" name="doctor_id" class="dates form-control"  hidden>
+                            <input type="text" id="doctor" name="doctor" class="dates form-control" value="{{name}}" readonly="readonly">
+							<input type="text" id="doctor_id" name="doctor_id" value="{{id}}" class="dates form-control"  hidden>
                             <label for="" id="datepicker2">Appointment Date</label>
-							<input type="date" id="datepicker2" class="dates form-control" placeholder="appointment Date">
+							<input type="date" id="app_date" name="app_date" class="dates form-control" placeholder="appointment Date" required>
 							<label for="Message">Message</label>
                             <textarea name="messege" class="" rows="5" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'"></textarea>
 							<div class="text-center confirm_btn_box">

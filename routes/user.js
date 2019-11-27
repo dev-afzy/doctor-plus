@@ -5,21 +5,59 @@ const passport = require('passport')
 
 
 //model
+//user
 const User = require('../model/user')
-const doctor = require('../model/doctor')
+
+//doctor
+const Doctor = require('../model/doctor')
+
+//Department
 const Dept = require('../model/dept')
+
+//Appointment details
+const Book = require('../model/book')
+
 
 /* GET users profile. */
 router.get('/profile', isAuthenticated,(req, res)=> {
-  // res.send("department")
+  
   return res.render('user/profile');
   
 });
 
 /* GET users BOOK. */
-router.get('/book',isAuthenticated,(req, res, next)=> {
-  // res.send("department")
-  res.render('user/book',{ book1:1});
+router.get('/book/:id',isAuthenticated,(req, res, next)=> {
+  var doc_id = req.params.id
+  Doctor.findById(doc_id,(err, doc)=>{
+    if(err){
+      console.log(err)
+    }
+  console.log(doc.name)
+  res.render('user/book',{ book1:1,id:doc_id, name:doc.name});
+  })
+});
+
+/* Post users BOOK. */
+router.post('/book',isAuthenticated,(req, res, next)=> {
+  const {name, phone, email, dob, doctor, doctor_id, app_date, message} = req.body
+  const book = new Book({
+    user:req.user.id,
+    name:name,
+    phone:phone,
+    email:email,
+    dob:dob,
+    doctor:doctor,
+    doctor_id:doctor_id,
+    app_date:app_date,
+    message:message
+  })
+  book.save().
+  then(
+    
+    res.render('index',))
+  .catch(console.log("some error occured"))
+ 
+  console.log(req.body)
   
 });
 
@@ -45,7 +83,7 @@ router.get('/depsub/:id',(req, res)=> {
       return err
     }
      
-    doctor.find({department:depttitle.title},(err, docs)=>{
+    Doctor.find({department:depttitle.title},(err, docs)=>{
       var doctorchunks=[]
       var chunksize = 4
       for(var i = 0; i < docs.length; i+=chunksize){
@@ -63,7 +101,7 @@ router.get('/depsub/:id',(req, res)=> {
 
 /* GET Doctor. */
 router.get('/doctors',(req, res)=> {
-  doctor.find((err, docs)=>{
+  Doctor.find((err, docs)=>{
     var doctorchunks=[]
     var chunksize = 4
     for(var i = 0; i < docs.length; i+=chunksize){

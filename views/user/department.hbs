@@ -3,7 +3,7 @@
 	<div class="banner_inner d-flex align-items-center">
 		<div class="container">
 			<div class="banner_content text-left">
-				<h2>Procedure Category</h2>
+				<h4>Procedure Category</h4>
 				<div class="page_link">
 					<a href="/">Home</a>
 					<a href="user/department"> Departments</a>
@@ -15,109 +15,37 @@
 
 	<!--================ Procedure Category Area =================-->
 	<section class="procedure_category section_gap">
-		<div class="container">
+		<div class="container">			
 			<div class="row justify-content-center section-title-wrap">
-				<div class="col-lg-12">
+				<div class="col-lg-12">					
 					<h1>DEPARTMENTS</h1>
 				</div>
 			</div>
-
-			<div class="row">
-				<div class="col-lg-4">
+			{{# each dept}}
+			<div class="row mt-3">
+				{{# each this}}
+				<div class="col-lg-3">
 					<div class="categories_post">
-						<img src="/images/procedure/p1.jpg" alt="Procedure">
+						<img src="{{this.imgpath}}" class="dept" alt="Procedure">
 						<div class="categories_details">
 							<div class="categories_text">
 								<div class="border_line"></div>
-								<a href="single-blog.html">
-									<h5>BOOK AN APPOINTMENT</h5>
+								<a href="/user/depsub">
+									<h5>View Doctors</h5>
 								</a>
 								<div class="border_line"></div>								
 							</div>
 						</div>
 					</div>
-					<a href=""><h2 class="text-primary mt-2 text-center">E N T</h2></a> 
-				</div>
-				<div class="col-lg-4">
-					<div class="categories_post">
-						<img src="/images/procedure/p2.jpg" alt="Procedure">
-						<div class="categories_details">
-							<div class="categories_text">
-								<div class="border_line"></div>
-								<a href="single-blog.html">
-									<h5>BOOK AN APPOINTMENT</h5>
-								</a>
-								<div class="border_line"></div>
-							</div>
-						</div>
-					</div>
-					<a href=""><h2 class="text-primary mt-2 text-center">E N T</h2></a> 
-				</div>
-				<div class="col-lg-4">
-					<div class="categories_post">
-						<img src="/images/procedure/p3.jpg" alt="Procedure">
-						<div class="categories_details">
-							<div class="categories_text">
-								<div class="border_line"></div>
-								<a href="single-blog.html">
-									<h5>BOOK AN APPOINTMENT</h5>
-								</a>
-								<div class="border_line"></div>
-							</div>
-						</div>
-					</div>
-					<a href=""><h2 class="text-primary mt-2 text-center">E N T</h2></a> 
-				</div>								
+					<a href="/user/depsub/{{this.id}}"><h4 class="text-primary mt-4 text-center">{{this.title}}</h4></a> 
+					
+				</div>	
+				{{/each}}			
 			</div>
-			<div class="row mt-4">
-				<div class="col-lg-4">
-					<div class="categories_post">
-						<img src="/images/procedure/p1.jpg" alt="Procedure">
-						<div class="categories_details">
-							<div class="categories_text">
-								<div class="border_line"></div>
-								<a href="single-blog.html">
-									<h5>BOOK AN APPOINTMENT</h5>
-								</a>
-								<div class="border_line"></div>								
-							</div>
-						</div>
-					</div>
-					<a href=""><h2 class="text-primary mt-2 text-center">E N T</h2></a> 
-				</div>
-				<div class="col-lg-4">
-					<div class="categories_post">
-						<img src="/images/procedure/p2.jpg" alt="Procedure">
-						<div class="categories_details">
-							<div class="categories_text">
-								<div class="border_line"></div>
-								<a href="single-blog.html">
-									<h5>BOOK AN APPOINTMENT</h5>
-								</a>
-								<div class="border_line"></div>
-							</div>
-						</div>
-					</div>
-					<a href=""><h2 class="text-primary mt-2 text-center">E N T</h2></a> 
-				</div>
-				<div class="col-lg-4">
-					<div class="categories_post">
-						<img src="/images/procedure/p3.jpg" alt="Procedure">
-						<div class="categories_details">
-							<div class="categories_text">
-								<div class="border_line"></div>
-								<a href="single-blog.html">
-									<h5>BOOK AN APPOINTMENT</h5>
-								</a>
-								<div class="border_line"></div>
-							</div>
-						</div>
-					</div>
-					<a href=""><h2 class="text-primary mt-2 text-center">E N T</h2></a> 
-				</div>								
-			</div>
-
+			{{/each}}
+			
 		</div>
+		
 	</section>
 	<!--================ End Procedure Category Area =================-->
-	
+

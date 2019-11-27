@@ -30,26 +30,7 @@ module.exports = function(passport) {
             }
           });
         })
-      
-      // else{
-      //   Doctor.findOne({ email: email}).then(user => 
-      //     {
-      //     if (!user) {
-      //       return done(null, false, { message: 'Email Id is not registered' });
-      //     }
-  
-      //     // Match password
-      //     bcrypt.compare(password, user.password, (err, isMatch) => {
-      //     //   if (err) throw err;
-      //       if (isMatch) {
-      //         return done(null, user);
-      //       } else {
-      //         return done(null, false, { message: 'Email Id or Password incorrect' });
-      //       }
-      //     });
-      //   })
-      // }
-    
+
     }),
     passport.use('doctor',
     new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
@@ -68,10 +49,7 @@ module.exports = function(passport) {
               return done(null, false, { message: 'Email Id or Password incorrect' });
             }
           });
-        })
-      
-    
-        
+        })        
     })
     )    
   );
@@ -95,18 +73,4 @@ module.exports = function(passport) {
         }
     })
   })    
-  // passport.deserializeUser(function(id, done) {
-  //   if(User){
-  //     User.findById(id, function(err, user) {
-  //     done(err, user);
-  //   })}
-    
-  //   else{
-  //     Doctor.findById(id, function(err, user) {
-  //     done(err, user);
-  //     })
-  //   }
-    
-  // });
-  
 };

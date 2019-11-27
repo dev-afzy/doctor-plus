@@ -14,16 +14,9 @@
                             <input type="email" class="form-control" name="email" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'">
 							<label for="dop">Date Of Birth</label>
                             <input type="date" id="datepicker1" name="dop" class="dates form-control" placeholder="Date of Birth">
-							<label id="service-select">Disease Type</label>
-                            <div class="form-select" id="service-select">
-								<select>
-									<option data-display="">Disease Type</option>
-									<option value="1">Type One</option>
-									<option value="2">Type Two</option>
-									<option value="3">Type Three</option>
-									<option value="4">Type Four</option>
-								</select>
-							</div>
+							<label for="dop">Doctor Name</label>
+                            <input type="text" id="doctor" name="doctor" class="dates form-control" placeholder="" disabled>
+							<input type="text" id="doctor_id" name="doctor_id" class="dates form-control"  hidden>
                             <label for="" id="datepicker2">Appointment Date</label>
 							<input type="date" id="datepicker2" class="dates form-control" placeholder="appointment Date">
 							<label for="Message">Message</label>

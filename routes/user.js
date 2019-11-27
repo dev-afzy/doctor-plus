@@ -6,6 +6,8 @@ const passport = require('passport')
 
 //model
 const User = require('../model/user')
+const doctor = require('../model/doctor')
+const Dept = require('../model/dept')
 
 /* GET users profile. */
 router.get('/profile', isAuthenticated,(req, res)=> {
@@ -23,14 +25,53 @@ router.get('/book',isAuthenticated,(req, res, next)=> {
 
 /* GET users Department. */
 router.get('/department',(req, res)=> {
-  // res.send("department")
-  res.render('user/department');
+
+  Dept.find((err,doc)=>{
+    var deptchunk = []
+    var chunksize = 4
+    for (var i = 0; i < doc.length; i+=chunksize){
+      deptchunk.push(doc.slice(i, i+chunksize))
+    } res.render('user/department', {dept:deptchunk});
+  })
+ 
   
 });
 
+/* GET users Department. */
+router.get('/depsub/:id',(req, res)=> {
+  var dept = req.params.id
+  Dept.findById(dept,(err, depttitle)=>{
+    if(err){
+      return err
+    }
+     
+    doctor.find({department:depttitle.title},(err, docs)=>{
+      var doctorchunks=[]
+      var chunksize = 4
+      for(var i = 0; i < docs.length; i+=chunksize){
+        doctorchunks.push(docs.slice(i, i+chunksize))
+      }
+      
+     return res.render('user/depsub', { doctors:doctorchunks, deptname:depttitle.title })
+    })
+    
+  })
+  
+  
+  
+});
+
+/* GET Doctor. */
 router.get('/doctors',(req, res)=> {
-  // res.send("department")
-  res.render('user/doctors');
+  doctor.find((err, docs)=>{
+    var doctorchunks=[]
+    var chunksize = 4
+    for(var i = 0; i < docs.length; i+=chunksize){
+      doctorchunks.push(docs.slice(i, i+chunksize))
+    }
+   return res.render('user/doctors', { doctors:doctorchunks  })
+  })
+ 
   
 });
 

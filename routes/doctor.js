@@ -8,6 +8,7 @@ var router = express.Router();
 
 //model
 const Doctor = require('../model/doctor')
+const Book = require('../model/book')
 
 /* GET doctors listing. */
 router.get('/',(req, res, next) =>{
@@ -16,7 +17,28 @@ router.get('/',(req, res, next) =>{
 
  /* GET Doctor Login. */
 router.get('/appointment',isAuthenticated,(req,res)=>{
-  res.render('doctor/appointment',{profile:1})
+  
+  Book.find({doctor_id:req.user.id},(err, doc)=>{
+    if(err){
+      console.log(err)
+    }
+    var book = []
+    var count = []
+    for(var i = 1; i <= doc.length; i++){
+      book.push(doc.slice(i, i+1))
+     
+    }
+    // for (i= 1; i <= doc.length; i++){
+    //   count = i 
+    //   var data = book.concat(count)
+    //   console.log(data)
+    //   // console.log(i)
+    // }
+    console.log(count)
+    console.log(book)
+    res.render('doctor/appointment',{profile:1, details:book, count:count})
+  })
+ 
 })
   
   /* GET Doctot profile. */

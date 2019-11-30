@@ -3,35 +3,25 @@
     <table class="table mb-5">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">No</th>
+      <th scope="col">{{lookup ../count @key}}</th>
       <th scope="col">Name</th>
-      <th scope="col">Age</th>
-      <th scope="col">Date</th>
-      <th scope="col">Phone number</th>
+      <th scope="col">Appointment Date</th>
+      <th scope="col">Phone</th>         
     </tr>
   </thead>
+      
   <tbody>
+    {{#each details}}  
     <tr>
+      {{#each this}}
       <th scope="row">1</th>
-      <td>Mark</td>
-      <td>33</td>
-      <td>12/12/1998</td>
-      <td>1234567890</td>
+      <td>{{this.name}}</td>
+      <td>{{this.app_date}}</td>
+      <td>{{this.phone}}</td>
+      {{/each }}
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>35</td>
-      <td>12/12/1998</td>
-      <td>1234567890</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>21</td>
-      <td>12/12/1998</td>
-      <td>1234567890</td>
-    </tr>
+    {{/each }}
+    
   </tbody>
 </table>
 

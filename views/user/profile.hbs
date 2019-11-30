@@ -12,22 +12,23 @@
 	</div>
 </section>
 <div class="container emp-profile mt-4">
-            <form method="post">
+            <form method="post" action="/user/image">
                 <div class="row">
-                    <div class="col-md-4">
+                    {{!-- <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" name="image" alt=""/>
                             <div class="file btn btn-lg btn-primary">
                                 Change Photo
-                                <input type="file" name="file"/>
+                                <input id="file" type="file" name="photo" accept="image/*"/>
+                                <button type="submit"></button>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-md-6">
                         <div class="profile-head mb-5">
-                                    <h5>
-                                        Kshiti Ghelani
-                                    </h5>
+                                    <h3>
+                                        {{name}}
+                                    </h3>
                                     
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
@@ -41,117 +42,67 @@
                         <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
                     </div>
                 </div>
+               
                 <div class="row">
                     <div class="col-md-4">
                         <h3 class="text-center text-secondary">Your Appointments</h3>
+                        {{#each doctor}}
                         <div class="border mt-2">
-                            
+                            {{#each this}}
+                                {{#each status}}
+                                    {{#each this}}
                             <a href="" class="btn btn-danger float-right mt-5 mr-2 ">Cancel</a>
-                            <p class=" mt-2 ml-2"> Doctor Name : afees</p>
+                                    {{/each}}
+
+                                {{/each}}
+                            <p class=" mt-2 ml-2"> Doctor Name : {{this.doctor}}</p>
                             <p class=" mt-2 ml-2">place : akh hospital</p>
-                            <p class=" ml-2 mb-0">Date : 12/02/2019</p><br>
-                            
+                            <p class=" ml-2 mb-0">Date : {{this.app_date}}</p><br>
+                            {{/each}}
                         </div>
-                         <div class="border mt-2">
-                            
-                            <a href="" class="btn btn-danger float-right mt-5 mr-2 ">Cancel</a>
-                            <p class=" mt-2 ml-2"> Doctor Name : afees</p>
-                            <p class=" mt-2 ml-2">place : akh hospital</p>
-                            <p class=" ml-2 mb-0">Date : 12/02/2019</p><br>
-                            
-                        </div>
-                         <div class="border mt-2">
-                            
-                            <a href="" class="btn btn-danger float-right mt-5 mr-2 ">Cancel</a>
-                            <p class=" mt-2 ml-2"> Doctor Name : afees</p>
-                            <p class=" mt-2 ml-2">place : akh hospital</p>
-                            <p class=" ml-2 mb-0">Date : 12/02/2019</p><br>
-                            
-                        </div>
+                        {{/each}}
+                         
                     <a href="">
                         <p class="float-right">See More >></p>
                     </a>
-
+            </form>    
                     </div>
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>User Id</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Kshiti123</p>
-                                            </div>
-                                        </div>
+                                        
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>Email</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>kshitighelani@gmail.com 
-                                                <a href="" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"><i class="fa fa-pencil ml-2 text-primary" aria-hidden="true">
-                                                </i></a><div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Update</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form>
-                                                        <div class="form-group">
-                                                            <label for="recipient-name" class="col-form-label">Update Email:</label>
-                                                            <input type="email"  class="form-control" id="recipient-name" required>
-                                                        </div>
-                                                        </form>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn btn-primary">Send Changes</button>
-                                                    </div>
-                                                    </div>
-                                                </div>
-
-
-                                                </div>
-
-</p>
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Phone</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>123 456 7890 
+                                                <p>{{email}} 
                                                 <a href="" data-toggle="modal" data-target="#exampleModal-1" data-whatever="@mdo"><i class="fa fa-pencil ml-2 text-primary" aria-hidden="true">
                                                 </i></a>
                                                 <div class="modal fade" id="exampleModal-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Update</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                                </button>
+                                                        <form action="/user/email" method="POST">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                
+                                                                        <div class="form-group">
+                                                                            <label for="recipient-email" class="col-form-label">Update :</label>
+                                                                            <input type="email" name="uemail" id="" class="form-control" id="recipient-email" required>
+                                                                        </div>
+                                                                
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-primary">Send Changes</button>
+                                                                </div>
                                                             </div>
-                                                            <div class="modal-body">
-                                                                <form>
-                                                                    <div class="form-group">
-                                                                        <label for="recipient-name" class="col-form-label">Update Phone :</label>
-                                                                        <input type="email"  class="form-control" id="recipient-name" required>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                                <button type="button" class="btn btn-primary">Send Changes</button>
-                                                            </div>
-                                                        </div>
+                                                        </form>
                                                     </div>
                                                 </div>
                                                 
@@ -160,34 +111,77 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Date of Birth</label>
+                                                <label>Phone</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>22/08/2019 
+                                                <p>{{phone}} 
                                                     <a href="" data-toggle="modal" data-target="#exampleModal-2" data-whatever="@mdo"><i class="fa fa-pencil ml-2 text-primary" aria-hidden="true">
                                                 </i></a>
                                                 <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Update</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                                </button>
+                                                        <form action="/user/phone" method="POST">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                
+                                                                        <div class="form-group">
+                                                                            <label for="recipient-name" class="col-form-label">Update Phone :</label>
+                                                                           <input type="tel" class="form-control " name="phone" placeholder="7736868256 "
+							                                                onfocus="this.placeholder = '7736868256'" onblur="this.placeholder = 'Phone'" 
+							                                                required pattern="[0-9]{10}" oninvalid="this.setCustomValidity('Please enter valid phone number')"
+    						                                                oninput="this.setCustomValidity('')" 
+							>	
+                                                                        </div>
+                                                                
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-primary">Send Changes</button>
+                                                                </div>
                                                             </div>
-                                                            <div class="modal-body">
-                                                                <form>
-                                                                    <div class="form-group">
-                                                                        <label for="recipient-name" class="col-form-label">Update Date of Birth :</label>
-                                                                        <input type="date"  class="form-control" id="recipient-name" required>
-                                                                    </div>
-                                                                </form>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Date of Birth</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{dob}} 
+                                                    <a href="" data-toggle="modal" data-target="#exampleModal-2" data-whatever="@mdo"><i class="fa fa-pencil ml-2 text-primary" aria-hidden="true">
+                                                </i></a>
+                                                <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <form action="/user/dob" method="POST">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                
+                                                                        <div class="form-group">
+                                                                            <label for="recipient-name" class="col-form-label">Update Date of Birth :</label>
+                                                                            <input type="text" name="dob"  class="form-control" id="recipient-name" required>
+                                                                        </div>
+                                                                
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-primary">Send Changes</button>
+                                                                </div>
                                                             </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                                <button type="button" class="btn btn-primary">Send Changes</button>
-                                                            </div>
-                                                        </div>
+                                                        </form>
                                                     </div>
                                                 </div>
                                                 </p>
@@ -198,31 +192,33 @@
                                                 <label>City</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Banglore
+                                                <p>{{city}}
                                                     <a href="" data-toggle="modal" data-target="#exampleModal-3" data-whatever="@mdo"><i class="fa fa-pencil ml-2 text-primary" aria-hidden="true">
                                                 </i></a>
                                                 <div class="modal fade" id="exampleModal-3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Update</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                                </button>
+                                                        <form action="/user/city" method="POST">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                
+                                                                        <div class="form-group">
+                                                                            <label for="recipient-name" class="col-form-label">Update City :</label>
+                                                                            <input type="text" name="city"class="form-control" id="recipient-name" required>
+                                                                        </div>
+                                                                
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-primary">Send Changes</button>
+                                                                </div>
                                                             </div>
-                                                            <div class="modal-body">
-                                                                <form>
-                                                                    <div class="form-group">
-                                                                        <label for="recipient-name" class="col-form-label">Update City :</label>
-                                                                        <input type="text"  class="form-control" id="recipient-name" required>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                                <button type="button" class="btn btn-primary">Send Changes</button>
-                                                            </div>
-                                                        </div>
+                                                        </form>
                                                     </div>
                                                 </div>
                                                 </p>
@@ -233,31 +229,33 @@
                                                 <label>Zip</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>676306
+                                                <p>{{zip}}
                                                     <a href="" data-toggle="modal" data-target="#exampleModal-4" data-whatever="@mdo"><i class="fa fa-pencil ml-2 text-primary" aria-hidden="true">
                                                 </i></a>
                                                 <div class="modal fade" id="exampleModal-4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Update</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                                </button>
+                                                        <form action="/user/zip" method="POST">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                
+                                                                        <div class="form-group">
+                                                                            <label for="recipient-name" class="col-form-label">Update Zip :</label>
+                                                                            <input type="text" name="zip"  class="form-control" id="recipient-name" required>
+                                                                        </div>
+                                                                
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-primary">Send Changes</button>
+                                                                </div>
                                                             </div>
-                                                            <div class="modal-body">
-                                                                <form>
-                                                                    <div class="form-group">
-                                                                        <label for="recipient-name" class="col-form-label">Update Zip :</label>
-                                                                        <input type="text"  class="form-control" id="recipient-name" required>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                                <button type="button" class="btn btn-primary">Send Changes</button>
-                                                            </div>
-                                                        </div>
+                                                        </form>
                                                     </div>
                                                 </div>
                                                 </p>

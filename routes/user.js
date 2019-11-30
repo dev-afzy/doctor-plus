@@ -19,12 +19,212 @@ const Book = require('../model/book')
 
 
 /* GET users profile. */
+
 router.get('/profile', isAuthenticated,(req, res)=> {
+  Book.find({user:req.user.id},(err, doc)=>{
+    if(err){
+      console.log(err)
+    } 
+    var book = []
+    for(var i = 0; i < doc.length; i++){
+     
+      var lat = doc[i].app_date
+      book.push(doc.slice(i, i+1))
+         
+    }
+    console.log(book)
+    return res.render('user/profile',{doctor:book,image:req.user.image, name:req.user.name,
+      email:req.user.email, phone: req.user.phone, 
+      dob:req.user.dob, city:req.user.city, zip:req.user.zip});
+  })
   
-  return res.render('user/profile');
   
 });
 
+//update route 
+router.post('/email', isAuthenticated,(req, res, next)=>{
+  var user = req.user.id
+  var book = []
+  Book.find({user:req.user.id},(err, doc)=>{
+    if(err){
+      console.log(err)
+    } 
+ 
+    for(var i = 0; i < doc.length; i++){
+     
+      book.push(doc.slice(i, i+1))
+         
+    }
+  })
+  User.findById(user,(err, doc)=>{
+    if(err){
+      console.log(err)
+    }
+    umail = req.body.uemail
+    doc.email = umail
+    console.log(umail)
+    doc.save()
+    
+    res.render('user/profile', {doctor:book,image:req.user.image, name:req.user.name,
+      email:doc.email,phone: req.user.phone,
+      dob:req.user.dob, city:req.user.city, zip:req.user.zip}
+    )
+  })
+  
+})
+
+router.post('/phone', isAuthenticated,(req, res, next)=>{
+  var user = req.user.id
+  var book = []
+  Book.find({user:req.user.id},(err, doc)=>{
+    if(err){
+      console.log(err)
+    } 
+    for(var i = 0; i < doc.length; i++){
+     
+      book.push(doc.slice(i, i+1))
+         
+    }
+  })
+  User.findById(user,(err, doc)=>{
+    if(err){
+      console.log(err)
+    }
+    phone = req.body.phone
+    doc.phone = phone
+    console.log(phone)
+    doc.save()
+    
+    res.render('user/profile', {doctor:book,image:req.user.image, name:req.user.name,
+      email:req.user.email,phone: doc.phone,
+       dob:req.user.dob, city:req.user.city, zip:req.user.zip})
+  })
+  
+})
+
+router.post('/dob', isAuthenticated,(req, res, next)=>{
+  var user = req.user.id
+  var book = []
+  Book.find({user:req.user.id},(err, doc)=>{
+    if(err){
+      console.log(err)
+    } 
+
+    for(var i = 0; i < doc.length; i++){
+     
+      book.push(doc.slice(i, i+1))
+         
+    }
+  })
+  User.findById(user,(err, doc)=>{
+    if(err){
+      console.log(err)
+    }
+    dob = req.body.dob
+    doc.dob = dob
+    console.log(dob)
+    doc.save()
+    
+    res.render('user/profile', {doctor:book,image:req.user.image, name:req.user.name,
+      email:req.user.email,phone: req.user.phone,
+       dob:doc.dob, city:req.user.city, zip:req.user.zip})
+  })
+  
+})
+
+router.post('/city', isAuthenticated,(req, res, next)=>{
+  var user = req.user.id
+  var book = []
+  Book.find({user:req.user.id},(err, doc)=>{
+    if(err){
+      console.log(err)
+    } 
+    for(var i = 0; i < doc.length; i++){
+     
+      book.push(doc.slice(i, i+1))
+    
+    }
+  })
+  User.findById(user,(err, doc)=>{
+    if(err){
+      console.log(err)
+    }
+    city = req.body.city
+    doc.city = city
+    console.log(city)
+    doc.save()
+    
+    res.render('user/profile', {doctor:book,image:req.user.image, name:req.user.name,
+      email:req.user.email,phone: req.user.phone,
+       dob:req.user.dob, city:doc.city, zip:req.user.zip}
+    )
+  })
+  
+})
+
+router.post('/zip', isAuthenticated,(req, res, next)=>{
+  var user = req.user.id
+  var book = []
+  Book.find({user:req.user.id},(err, doc)=>{
+    if(err){
+      console.log(err)
+    } 
+    
+    for(var i = 0; i < doc.length; i++){
+     
+      book.push(doc.slice(i, i+1))
+         
+    }
+
+  })
+  User.findById(user,(err, doc)=>{
+    if(err){
+      console.log(err)
+    }
+    zip = req.body.zip
+    doc.zip = zip
+    console.log(zip)
+    doc.save()
+    
+    res.render('user/profile', {doctor:book,image:req.user.image, name:req.user.name,
+      email:req.user.email,phone: req.user.phone,
+       dob:req.user.dob, city:req.user.city, zip:doc.zip}
+    )
+
+})
+})
+
+router.post('/image', isAuthenticated,(req, res, next)=>{
+  var user = req.user.id
+  var book = []
+  Book.find({user:req.user.id},(err, doc)=>{
+    if(err){
+      console.log(err)
+    } 
+    
+    for(var i = 0; i < doc.length; i++){
+     
+      book.push(doc.slice(i, i+1))
+         
+    }
+
+  })
+  User.findById(user,(err, doc)=>{
+    if(err){
+      console.log(err)
+    }
+    image = req.body.image
+    doc.image = image
+    console.log(image)
+    doc.save()
+    
+    res.render('user/profile', {doctor:book,image:doc.image, name:req.user.name,
+      email:req.user.email,phone: req.user.phone,
+       dob:req.user.dob, city:req.user.city, zip:doc.zip}
+    )
+  })
+  
+})
 /* GET users BOOK. */
 router.get('/book/:id',isAuthenticated,(req, res, next)=> {
   var doc_id = req.params.id
@@ -40,6 +240,10 @@ router.get('/book/:id',isAuthenticated,(req, res, next)=> {
 /* Post users BOOK. */
 router.post('/book',isAuthenticated,(req, res, next)=> {
   const {name, phone, email, dob, doctor, doctor_id, app_date, message} = req.body
+  // const date = new Date()
+  // var diff = date < app_date ? 1:0
+  // console.log(diff)
+  // if (diff === true){
   const book = new Book({
     user:req.user.id,
     name:name,
@@ -58,7 +262,9 @@ router.post('/book',isAuthenticated,(req, res, next)=> {
   .catch(console.log("some error occured"))
  
   console.log(req.body)
-  
+  // }else{
+  //   res.render('user/book',{fail:1, doctor:doctor, doctor_id:doctor_id, book1:1})
+  // }
 });
 
 /* GET users Department. */
